@@ -16,16 +16,14 @@ public class Morse {
         StringBuilder resultado = new StringBuilder();
         String[] palabras = frase.toUpperCase().split("\\s+");
 
-        for (String palabra : palabras) {
-            resultado.append(convertirPalabraAMorse(palabra)).append(" / ");
+        for (int i = 0; i < palabras.length; i++) {
+            resultado.append(convertirPalabraAMorse(palabras[i]));
+            if (i < palabras.length - 1) {
+                resultado.append("   "); // Espacios para separar en morse (3)
+            }
         }
 
-        // En caso de que el ultimo carracter sea / se va a eliminar
-        if (resultado.length() > 3) {
-            resultado.setLength(resultado.length() - 3);
-        }
-
-        return "Cada palabra esta separada por una barra => " + resultado.toString();
+        return resultado.toString();
     }
 
     // Alfabeto morse
